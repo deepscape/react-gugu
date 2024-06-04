@@ -17,8 +17,13 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long tno;
 
+    @Setter
     private String title;
     private String writer;
+
+    @Setter
     private boolean complete;
+
+    @Setter
     private LocalDate dueDate;
 }

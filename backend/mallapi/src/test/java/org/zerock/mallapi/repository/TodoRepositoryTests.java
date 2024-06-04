@@ -32,4 +32,34 @@ public class TodoRepositoryTests {
                         .build())
                 .forEach(todoRepository::save);
     }
+
+    @Test
+    public void testRead() {
+        // 존재하는 번호로 확인
+        Long tno = 177L;
+
+        java.util.Optional<Todo> result = todoRepository.findById(tno);
+        Todo todo = result.orElseThrow();
+        log.info(todo);
+    }
+
+    @Test
+    public void testModify() {
+        Long tno = 177L;
+
+        java.util.Optional<Todo> result = todoRepository.findById(tno);
+        Todo todo = result.orElseThrow();
+        todo.setTitle("Modified..." + tno);
+        todo.setComplete(true);
+        todo.setDueDate(LocalDate.of(2023, 10, 10));
+
+        todoRepository.save(todo);
+    }
+
+    @Test
+    public void testDelete() {
+        Long tno = 102L;
+
+        todoRepository.deleteById(tno);
+    }
 }
