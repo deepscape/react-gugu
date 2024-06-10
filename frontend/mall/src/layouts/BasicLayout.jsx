@@ -1,4 +1,4 @@
-import BasicMenu from "../components/menu/BasicMenu"
+import BasicMenu from "../components/menus/BasicMenu"
 
 const BasicLayout = (props) => {
   return (
