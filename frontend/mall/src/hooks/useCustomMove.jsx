@@ -27,10 +27,16 @@ const useCustomMove = () => {
             queryStr = queryDefault
         }
 
-        navigate({pathname: '../list', search: queryStr})
+        navigate({ pathname: '../list', search: queryStr })
     }
 
-    return {moveToList, page, size}
+    const moveToModify = (num) => {
+        console.log(queryDefault)
+        
+        navigate({ pathname: `../modify/${num}`, search: queryDefault })   // 수정 시 기존 쿼리 스트링 유지          
+    }
+
+    return {moveToList, moveToModify, page, size}
 }
 
 export default useCustomMove
