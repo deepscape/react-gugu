@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { postAdd } from "../../api/todoApi";
 
 const initState = {
     title: '',
@@ -8,7 +9,7 @@ const initState = {
 
 const AddComponent = () => {
     const [todo, setTodo] = useState({...initState})    // Spread 연산자, 불변성 유지 
-    
+
     const handleChangeTodo = (e) => {
         // todo[e.target.name] = e.target.value            // 객체 리터럴 (신규 기능)
         // setTodo({...todo})
@@ -18,6 +19,13 @@ const AddComponent = () => {
 
     const handleClickAdd = () => {
         console.log(todo)
+        
+        postAdd(todo).then(result => {
+            console.log(result)
+            setTodo({...initState})
+        }).catch(e => {
+            console.log(e)
+        })
     }
 
     return (
