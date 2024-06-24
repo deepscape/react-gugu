@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { postAdd } from "../../api/todoApi";
 import ResultModal from "../common/ResultModal";
+import useCustomMove from "../../hooks/useCustomMove"
 
 const initState = {
     title: '',
@@ -11,6 +12,7 @@ const initState = {
 const AddComponent = () => {
     const [todo, setTodo] = useState({...initState})    // Spread 연산자, 불변성 유지 
     const [result, setResult] = useState(null)
+    const {moveToList} = useCustomMove()
 
     const handleChangeTodo = (e) => {
         // todo[e.target.name] = e.target.value            // 객체 리터럴 (신규 기능)
@@ -32,7 +34,10 @@ const AddComponent = () => {
         })
     }
 
-    const closeModal = () => { setResult(null) }
+    const closeModal = () => {
+        setResult(null) 
+        moveToList()
+    }
 
     return (
         <div className="border-2 border-sky-200 mt-10 p-4">
