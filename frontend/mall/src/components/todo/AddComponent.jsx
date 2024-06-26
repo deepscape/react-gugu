@@ -6,7 +6,7 @@ import useCustomMove from "../../hooks/useCustomMove"
 const initState = {
     title: '',
     writer: '',
-    dueDate: ''
+    dueDate: null
 }
 
 const AddComponent = () => {
