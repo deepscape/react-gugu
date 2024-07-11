@@ -25,7 +25,7 @@ public class Product {
     private boolean delFlag;
 
     @ElementCollection
-    @Builder.Default
+    @Builder.Default        // empty List 로 초기화
     private List<ProductImage> imageList = new ArrayList<>();
 
     public void changePrice(int price) {
@@ -55,4 +55,3 @@ public class Product {
     }
 
 }
-
