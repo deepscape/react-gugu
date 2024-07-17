@@ -69,4 +69,24 @@ class ProductRepositoryTests {
         productRepository.updateToDelete(pno, true);
     }
 
+    @Test
+    public void testUpdate() {
+        Long pno = 10L;
+
+        Product product = productRepository.selectOne(pno).get();
+
+        product.changeName("10번 상품");
+        product.changeDesc("10번 상품 설명입니다.");
+        product.changePrice(5000);
+
+        // 첨부파일 수정
+        product.clearList();
+
+        product.addImageString(UUID.randomUUID().toString()+"_" + "NEW_IMAGE1.jpg");
+        product.addImageString(UUID.randomUUID().toString()+"_" + "NEW_IMAGE2.jpg");
+        product.addImageString(UUID.randomUUID().toString()+"_" + "NEW_IMAGE3.jpg");
+
+        productRepository.save(product);
+    }
+
 }
